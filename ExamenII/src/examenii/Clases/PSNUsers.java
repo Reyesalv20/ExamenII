@@ -82,45 +82,46 @@ public class PSNUsers {
             List<Trophy> trophies = userTrophies.getOrDefault(username, new ArrayList<>());
 
             trophies.add(trophy);
-
             userTrophies.put(username, trophies);
+            System.out.println( userTrophies.put(username, trophies));
         }
     }
 
     public void playerInfo(String username) {
-        long pos = users.getOrDefault(username, -1L);
-        if (pos != -1) {
-            try {
-                doc.seek(pos);
-                String user = doc.readUTF();
-                boolean isActive = doc.readBoolean();
+    long pos = users.getOrDefault(username, -1L);
+    if (pos != -1) {
+        try {
+            doc.seek(pos);
+            String user = doc.readUTF();
+            boolean isActive = doc.readBoolean();
 
-                if (isActive) {
-                    System.out.println("Username: " + user);
+            if (isActive) {
+                System.out.println("Username: " + user);
 
-                    List<Trophy> trophies = userTrophies.get(username);
+                List<Trophy> trophies = userTrophies.get(username);
 
-                    if (trophies != null && !trophies.isEmpty()) {
-                        System.out.println("Trofeos:");
+                if (trophies != null && !trophies.isEmpty()) {
+                    System.out.println("Trofeos:");
 
-                        for (Trophy trophy : trophies) {
-                            System.out.println("   Juego: " + trophy.getTrophyGame());
-                            System.out.println("   Nombre: " + trophy.getTrophyName());
-                            System.out.println("   Fecha Ganado: " + trophy.getDateEarned());
-                        }
-                    } else {
-                        System.out.println("No tiene trofeos.");
+                    for (Trophy trophy : trophies) {
+                        System.out.println("   Juego: " + trophy.getTrophyGame());
+                        System.out.println("   Nombre: " + trophy.getTrophyName());
+                        System.out.println("   Fecha Ganado: " + trophy.getDateEarned());
                     }
                 } else {
-                    System.out.println("El usuario está desactivado.");
+                    System.out.println("No tiene trofeos.");
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+            } else {
+                System.out.println("El usuario está desactivado.");
             }
-        } else {
-            System.out.println("Usuario no encontrado.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    } else {
+        System.out.println("Usuario no encontrado.");
     }
+}
+
 
     public enum TrophyType {
         PLATINO(5),

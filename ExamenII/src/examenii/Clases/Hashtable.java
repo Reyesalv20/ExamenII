@@ -40,16 +40,18 @@ public void add(String username, long pos) {
     public long search(String username) {
 
         Entry actnodo = nodo;
-        do {
+        while (actnodo != null) {
             if (actnodo.username.equals(username)) {
-                System.out.println("Encontro ek username en la lista ");
+                 System.out.println("entroo");
                 return actnodo.posicion;
+              
             }
             actnodo = actnodo.next;
-        }while((actnodo != null));
+        }
         //si no encontro la posicion 
         return -1; 
     }
+    
 
 }
 

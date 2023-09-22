@@ -161,7 +161,7 @@ public class Main extends javax.swing.JFrame {
          String userInput = "";
 
         while (userInput.trim().isEmpty()) {
-            userInput = JOptionPane.showInputDialog("Ingreseel usuario a desactivar:");
+            userInput = JOptionPane.showInputDialog("Ingrese el usuario a desactivar:");
 
             if (userInput == null) {
                 break;
@@ -189,7 +189,9 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // MOSTRAR INFO DEL USUARIO
-
+        MostrarInfo obj=new MostrarInfo();
+        obj.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_jButton4MouseClicked
 
