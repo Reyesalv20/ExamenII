@@ -3,33 +3,17 @@ package examenii.Clases;
 public class Hashtable {
 
     Entry nodo;
-//
-//    public void add(String username, long pos) {
-//        Entry newnodo = new Entry(username, pos);
-//        if (nodo == null) {
-//            nodo = newnodo;
-//        } else {
-//            Entry siguiente = nodo;
-//            do {
-//                
-//                siguiente = siguiente.next;
-//                //el sout es para verificar la info del siguiente
-//                System.out.println("siguiente"+siguiente);
-//            }while((siguiente.next != null));
-//            siguiente.next = newnodo;
-//        }
-//
-//    }
+
 public void add(String username, long pos) {
-    Entry newEntry = new Entry(username, pos);
+    Entry nvnodo = new Entry(username, pos);
     if (nodo == null) {
-        nodo = newEntry;
+        nodo = nvnodo;
     } else {
-        Entry current = nodo;
-        while (current.next != null) {
-            current = current.next;
+        Entry act = nodo;
+        while (act.next != null) {
+            act = act.next;
         }
-        current.next = newEntry;
+        act.next = nvnodo;
     }
 }
     public void remove(String username) {

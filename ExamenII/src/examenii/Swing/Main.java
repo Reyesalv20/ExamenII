@@ -12,15 +12,11 @@ import javax.swing.JOptionPane;
  * @author ruthreyes
  */
 public class Main extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Main
-     */
+ PSNUsers psnUsers = new PSNUsers("src/Documentos/psn.dat");
     public Main() {
         initComponents();
     }
-    
- 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,43 +132,71 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // AGREGAR USUARIO
-        PSNUsers psnUsers = new PSNUsers("ruta_del_archivo.dat");
-        String userInput = JOptionPane.showInputDialog("Ingrese su nombre:");
-        psnUsers.addUser(userInput);
-        
-        
+    
+
+        String userInput = "";
+
+        while (userInput.trim().isEmpty()) {
+            userInput = JOptionPane.showInputDialog("Ingrese su nombre:");
+
+            if (userInput == null) {
+                // El usuario canceló el cuadro de diálogo
+                break;
+            }
+
+            if (userInput.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar un nombre de usuario válido.");
+            }
+        }
+
+        if (userInput != null && !userInput.trim().isEmpty()) {
+            // Agrega el usuario solo si la entrada no está en blanco
+            psnUsers.addUser(userInput);
+        }
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // DESACTIVAR USUARIO
-        PSNUsers psnUsers = new PSNUsers("src/Documentos/");
-        String userInput = JOptionPane.showInputDialog("Ingreseel usuario a eliminar:");
-        psnUsers.deactivateUser(userInput);
-        
+         String userInput = "";
+
+        while (userInput.trim().isEmpty()) {
+            userInput = JOptionPane.showInputDialog("Ingreseel usuario a desactivar:");
+
+            if (userInput == null) {
+                break;
+            }
+            if (userInput.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar un nombre de usuario válido.");
+            }
+        }
+
+        if (userInput != null && !userInput.trim().isEmpty()) {
+          
+            psnUsers.deactivateUser(userInput);
+        }
+
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // AGREGAR TROFEO
-        
-        
+     agregartrofeo obj=new agregartrofeo();
+     obj.setVisible(true);
+     this.setVisible(false);
+     
+
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // MOSTRAR INFO DEL USUARIO
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // LISTADO DE USUARIOS
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton5MouseClicked
 
     /**
